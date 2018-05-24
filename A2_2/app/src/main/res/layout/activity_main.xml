@@ -8,24 +8,14 @@
 
 
     <EditText
-        android:id="@+id/mult_text_4"
+        android:id="@+id/mult_text_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mult_text_3" />
-
-    <EditText
-        android:id="@+id/mult_text_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mult_text_2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/mult_text_2"
@@ -38,13 +28,24 @@
         app:layout_constraintTop_toBottomOf="@+id/mult_text_1" />
 
     <EditText
-        android:id="@+id/mult_text_1"
+        android:id="@+id/mult_text_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mult_text_2" />
+
+    <EditText
+        android:id="@+id/mult_text_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/mult_text_3" />
 
 </android.support.constraint.ConstraintLayout>
