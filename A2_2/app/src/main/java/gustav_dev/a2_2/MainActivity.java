@@ -42,6 +42,11 @@ public class MainActivity extends Activity {
 
     }
 
+
+
+
+
+
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         ed1 = (EditText) findViewById(R.id.mult_text_1);
@@ -59,7 +64,7 @@ public class MainActivity extends Activity {
         savedInstanceState.putString("text3",text3);
         savedInstanceState.putString("text4",text4);
 
-        Log.v("DEMO","---> onSaveInstanceState() <--- ");
+        Log.v("DEMO","---> onSaveInstanceState() Main<--- ");
     }
 
 
@@ -82,7 +87,7 @@ public class MainActivity extends Activity {
         ed4.setText(text4);
 
 
-        Log.v("DEMO","---> onRestoreInstanceState() <--- ");
+        Log.v("DEMO","---> onRestoreInstanceState() Main<--- ");
     }
 
 
@@ -101,8 +106,9 @@ public class MainActivity extends Activity {
         Log.v("DEMO","##### Activity Main: "+item.getTitle()+" #####");
         if (item.getItemId()==R.id.menuItemBuchfuehrung) {
             temp = new Intent(this, SecondActivity.class);
-            //temp.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            //temp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(temp);
+
         }
 
         return true;
@@ -112,27 +118,27 @@ public class MainActivity extends Activity {
 
     public void onStart() {
         super.onStart();
-        Log.v("DEMO","---> onStart() <--- ");
+        Log.v("DEMO","---> onStart() Main <--- ");
     }
 
     public void onResume() {
         super.onResume();
-        Log.v("DEMO","---> onResume() <--- ");
+        Log.v("DEMO","---> onResume() Main<--- ");
     }
 
     public void onPause() {
         super.onPause();
-        Log.v("DEMO","---> onPause() <--- ");
+        Log.v("DEMO","---> onPause() Main <--- ");
     }
 
     public void onStop() {
         super.onStop();
-        Log.v("DEMO","---> onStop() <--- ");
+        Log.v("DEMO","---> onStop() Main<--- ");
     }
 
     public void onDestroy() {
         super.onDestroy();
-        Log.v("DEMO","---> onDestroy() <--- ");
+        Log.v("DEMO","---> onDestroy() Main<--- ");
     }
 
 
