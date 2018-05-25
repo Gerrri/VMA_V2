@@ -45,8 +45,57 @@ public class SecondActivity extends Activity {
         darray = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,data);
         listView1.setAdapter(darray);
 
+
+        //Debug
+        Button popupbutton = (Button) findViewById(R.id.popupbutton);
+        popupbutton.setOnClickListener(new MyOnClickListener()); // Setzen des Button-Listeners (siehe unten)
+
     }
 
+    class MyOnClickListener implements View.OnClickListener {
+
+        public void onClick(View v) {
+
+            // Erzeugung des PopupWindows (siehe Klassendefinition unten)
+            final MyPopupWindow pw = new MyPopupWindow(SecondActivity.this);
+
+            // Festlegung eines Listeners, der ausgeführt wird, wenn das PopupWindows schließt
+            pw.setOnDismissListener(new PopupWindow.OnDismissListener() {  // ordnet ihm einen "OnDismissListener" zu, der bei Schlie�en des PopupWindows aktiv wird
+
+                public void onDismiss() {
+                    // Beschaffung der Benutzereingabe aus dem PopupWindow
+                    String eingegebenerName = pw.eingabefeld.getText().toString();
+                    // Anzeige eines Toasts mit der Eingabe
+                    // Minimalanzeige:
+                    //  Toast.makeText(PopupWindowDemo.this, "Hallo " + eingegebenerName, Toast.LENGTH_LONG).show();
+                    // alternativ: Toast-Anzeige mit individualisiertem Layout
+                    Toast myToast = Toast.makeText(SecondActivity.this, "Eintrag Hinzugefügt!: " + eingegebenerName, Toast.LENGTH_LONG);
+                    myToast.setGravity(Gravity.CENTER, 0, 0);
+                    View myToastView = myToast.getView();
+                    myToastView.setBackgroundColor(Color.BLACK);
+                    TextView myToastMessage = (TextView) myToastView.findViewById(android.R.id.message);
+                    myToastMessage.setTextSize(24);
+                    myToastMessage.setBackgroundColor(Color.BLACK);
+                    myToastMessage.setTextColor(Color.WHITE);
+                    myToast.show();
+                }
+            });
+
+            pw.showAtLocation(pw.layout, Gravity.CENTER, 0, 0); // Anzeige des PopupWindows
+
+            //pw.showAtLocation(SecondActivity.this,Gravity.CENTER,0,0);
+
+            // pw.update(0,0,320,380);  Hier: Angabe der Höhe und Breite in absoluten Pixeln (px)
+
+            // Alternativ: Umrechnung in dichteunabhängige Pixel (dp)
+
+            int breite = (int ) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 320, getResources().getDisplayMetrics());
+            int hoehe = (int )TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 380, getResources().getDisplayMetrics());
+            pw.update(0,0,breite,hoehe);
+        }
+    }
+
+    /*
     public void onStart() {
         super.onStart();
         Log.v("DEMO","---> onStart() <--- ");
@@ -78,7 +127,7 @@ public class SecondActivity extends Activity {
 
          pw.showAtLocation(pw.layout, Gravity.CENTER, 0, 0); // Anzeige des PopupWindows
 
-        pw.showAtLocation(SecondActivity.this,Gravity.CENTER,0,0);
+        //pw.showAtLocation(SecondActivity.this,Gravity.CENTER,0,0);
 
         // pw.update(0,0,320,380);  Hier: Angabe der Höhe und Breite in absoluten Pixeln (px)
 
@@ -89,6 +138,7 @@ public class SecondActivity extends Activity {
         pw.update(0,0,breite,hoehe);
 
     }
+    */
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,7 +187,8 @@ public class SecondActivity extends Activity {
             public void onClick(View v) {
                 CharSequence itemText = ((TextView)v).getText();
 
-                data.add(itemText.toString());
+
+                data.add(eingabefeld.getText().toString());
                 darray.notifyDataSetChanged();
                 dismiss();
             }
