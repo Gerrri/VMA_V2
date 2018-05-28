@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 
 
 
-
+    /*
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         ed1 = (EditText) findViewById(R.id.mult_text_1);
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 
         Log.v("DEMO","---> onRestoreInstanceState() Main<--- ");
     }
-
+    */
 
 
     public boolean onCreateOptionsMenu(Menu menu) {

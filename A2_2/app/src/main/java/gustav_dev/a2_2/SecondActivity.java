@@ -183,7 +183,7 @@ public class SecondActivity extends Activity {
                 CharSequence itemText = ((TextView)v).getText();
 
 
-                data.add(eingabefeld.getText().toString());
+                data.add(0,eingabefeld.getText().toString());
                 darray.notifyDataSetChanged();
                 dismiss();
             }
@@ -197,6 +197,33 @@ public class SecondActivity extends Activity {
 
 
 
+    }
+
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        String save[] = new String[data.size()];
+
+        for(int i=0; i<data.size(); i++){
+            save[i] = data.get(i);
+        }
+
+        savedInstanceState.putStringArray("data", save);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String restore[] = new String[savedInstanceState.getStringArray("data").length];
+
+        //data = savedInstanceState.getStringArray("data");
+        data.clear();
+        restore = savedInstanceState.getStringArray("data");
+
+        for(int i=0;i<savedInstanceState.getStringArray("data").length;i++){
+            data.add(restore[i]);
+        }
+
+        darray.notifyDataSetChanged();
     }
 
 
