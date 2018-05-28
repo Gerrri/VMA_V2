@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">A2_2</string>
+    <string name="frage_text">Geben Sie eine Zahl ein!</string>
+    <string name="abbrechen_text">Abbrechen!</string>
+    <string name="btn_Anlegen">Eintrag hinzufügen</string>
+</resources>
